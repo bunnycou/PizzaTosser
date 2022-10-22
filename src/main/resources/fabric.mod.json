@@ -20,11 +20,11 @@
   "entrypoints": {
     "main": [
       "net.explosionfish.pizzatosser.PizzaTosser"
+    ],
+    "client" : [
+      "net.explosionfish.pizzatosser.Client"
     ]
   },
-  "mixins": [
-    "pizzatoss.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.14.9",
