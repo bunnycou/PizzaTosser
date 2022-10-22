@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "pizzatoss",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Pizza Tosser",
+  "description": "This mod lets you make pizza in a fun way!",
   "authors": [
-    "Me!"
+    "bunnycou"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/bunnycou/pizzatosser"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/pizzatoss/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.explosionfish.pizzatosser.PizzaTosser"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "pizzatoss.mixins.json"
   ],
 
   "depends": {
