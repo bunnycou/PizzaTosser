@@ -59,7 +59,7 @@ public class DoughballEntity extends ThrownItemEntity {
         Entity entity = entityHitResult.getEntity();
 
         if (entity instanceof PlayerEntity playerEntity) {
-            playerEntity.giveItemStack(new ItemStack(PizzaTosser.DOUGHBALL_ITEM));
+            playerEntity.giveItemStack(new ItemStack(PizzaTosser.PIZZADOUGH_ITEM));
         }
     }
 

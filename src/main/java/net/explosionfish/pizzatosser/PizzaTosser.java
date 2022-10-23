@@ -8,6 +8,8 @@ import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.item.FoodComponent;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -25,7 +27,16 @@ public class PizzaTosser implements ModInitializer {
 	public static final DoughballItem DOUGHBALL_ITEM = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "doughball"),
-			new DoughballItem(new FabricItemSettings().group(ItemGroup.FOOD)));
+			new DoughballItem(new FabricItemSettings()
+					.maxCount(1)
+					.group(ItemGroup.FOOD))
+	);
+
+	public static final Item PIZZADOUGH_ITEM = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "pizzadough"),
+			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
 
 	public static final EntityType<DoughballEntity> DOUGHBALL_ENTITY = Registry.register(
 			Registry.ENTITY_TYPE,
