@@ -71,7 +71,7 @@ public class DoughballEntity extends ThrownItemEntity {
 
             if (hitResult.getType() != HitResult.Type.ENTITY) {
                 this.dropStack(new ItemStack(Items.DIRT));
-                this.playSound(SoundEvents.ENTITY_CREEPER_PRIMED, 0.8f, 0.5f);
+                this.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 0.8f, 0.5f);
             }
         }
     }

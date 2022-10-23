@@ -3,14 +3,17 @@ package net.explosionfish.pizzatosser;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.CakeBlock;
+import net.minecraft.block.Material;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.item.FoodComponent;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.slf4j.Logger;
@@ -36,6 +39,22 @@ public class PizzaTosser implements ModInitializer {
 			Registry.ITEM,
 			new Identifier(ModID, "pizzadough"),
 			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
+
+	public static final CakeBlock PIZZA_CAKE = Registry.register(
+			Registry.BLOCK,
+			new Identifier(ModID, "pizza_cake"),
+			new CakeBlock(FabricBlockSettings.copyOf(Blocks.CAKE))
+	);
+
+	public static final Item PIZZA_ITEM = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "pizza"),
+			new BlockItem(PIZZA_CAKE, new FabricItemSettings()
+					.group(ItemGroup.FOOD)
+					.food(new FoodComponent.Builder()
+							.hunger(4)
+							.build()))
 	);
 
 	public static final EntityType<DoughballEntity> DOUGHBALL_ENTITY = Registry.register(
