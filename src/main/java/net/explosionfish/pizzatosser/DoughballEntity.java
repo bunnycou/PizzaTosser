@@ -2,6 +2,7 @@ package net.explosionfish.pizzatosser;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -18,7 +19,11 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
+import java.io.Console;
+
 public class DoughballEntity extends ThrownItemEntity {
+
+    private Integer tosses = 0;
 
     public DoughballEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
@@ -26,6 +31,11 @@ public class DoughballEntity extends ThrownItemEntity {
 
     public DoughballEntity(World world, LivingEntity owner) {
         super(PizzaTosser.DOUGHBALL_ENTITY, owner, world);
+    }
+
+    public DoughballEntity(World world, LivingEntity owner, Integer tosses) {
+        super(PizzaTosser.DOUGHBALL_ENTITY, owner, world);
+        this.tosses = tosses;
     }
 
     public DoughballEntity(World world, double x, double y, double z) {
@@ -59,7 +69,14 @@ public class DoughballEntity extends ThrownItemEntity {
         Entity entity = entityHitResult.getEntity();
 
         if (entity instanceof PlayerEntity playerEntity) {
-            playerEntity.giveItemStack(new ItemStack(PizzaTosser.PIZZADOUGH_ITEM));
+            if (this.tosses % 3 == 0) {
+                playerEntity.giveItemStack(new ItemStack(PizzaTosser.PIZZADOUGH_ITEM));
+            } else {
+                this.tosses += 1;
+                DoughballItem item = PizzaTosser.DOUGHBALL_ITEM;
+                item.setTosses(this.tosses);
+                playerEntity.giveItemStack(new ItemStack(item));
+            }
         }
     }
 
@@ -71,7 +88,7 @@ public class DoughballEntity extends ThrownItemEntity {
 
             if (hitResult.getType() != HitResult.Type.ENTITY) {
                 this.dropStack(new ItemStack(Items.DIRT));
-                this.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 0.8f, 0.5f);
+                this.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 0.6f, 1f);
             }
         }
     }
