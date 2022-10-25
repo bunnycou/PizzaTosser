@@ -1,8 +1,9 @@
-package net.explosionfish.pizzatosser;
+package net.explosionfish.pizzatosser.Entity;
 
+import net.explosionfish.pizzatosser.Item.DoughballItem;
+import net.explosionfish.pizzatosser.PizzaTosser;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -18,8 +19,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
-
-import java.io.Console;
 
 public class DoughballEntity extends ThrownItemEntity {
 

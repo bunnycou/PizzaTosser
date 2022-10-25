@@ -1,15 +1,13 @@
 package net.explosionfish.pizzatosser;
 
+import net.explosionfish.pizzatosser.Block.PizzaBlock;
+import net.explosionfish.pizzatosser.Entity.DoughballEntity;
+import net.explosionfish.pizzatosser.Item.DoughballItem;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.CakeBlock;
-import net.minecraft.block.Material;
-import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -27,6 +25,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final String ModID = "pizzatoss";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ModID);
 
+
 	public static final DoughballItem DOUGHBALL_ITEM = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "doughball"),
@@ -41,20 +40,18 @@ public class PizzaTosser implements ModInitializer {
 			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
 	);
 
-	public static final CakeBlock PIZZA_CAKE = Registry.register(
+	// basic Pizza
+	public static final PizzaBlock PIZZA_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "pizza_cake"),
-			new CakeBlock(FabricBlockSettings.copyOf(Blocks.CAKE))
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 4)
 	);
 
 	public static final Item PIZZA_ITEM = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "pizza"),
 			new BlockItem(PIZZA_CAKE, new FabricItemSettings()
-					.group(ItemGroup.FOOD)
-					.food(new FoodComponent.Builder()
-							.hunger(4)
-							.build()))
+					.group(ItemGroup.FOOD))
 	);
 
 	public static final EntityType<DoughballEntity> DOUGHBALL_ENTITY = Registry.register(

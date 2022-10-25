@@ -1,5 +1,6 @@
-package net.explosionfish.pizzatosser;
+package net.explosionfish.pizzatosser.Item;
 
+import net.explosionfish.pizzatosser.Entity.DoughballEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
