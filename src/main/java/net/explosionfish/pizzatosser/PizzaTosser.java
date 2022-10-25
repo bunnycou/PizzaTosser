@@ -26,6 +26,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(ModID);
 
 
+	// basic dough items
 	public static final DoughballItem DOUGHBALL_ITEM = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "doughball"),
@@ -40,20 +41,36 @@ public class PizzaTosser implements ModInitializer {
 			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
 	);
 
-	// basic Pizza
-	public static final PizzaBlock PIZZA_CAKE = Registry.register(
+	// Pizzas (cake + item)
+	// Cheese Pizza
+	public static final PizzaBlock CHEESE_CAKE = Registry.register(
 			Registry.BLOCK,
-			new Identifier(ModID, "pizza_cake"),
-			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 4)
+			new Identifier(ModID, "cheese_cake"),
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 2)
 	);
 
-	public static final Item PIZZA_ITEM = Registry.register(
+	public static final Item CHEESE_PIZZA = Registry.register(
 			Registry.ITEM,
-			new Identifier(ModID, "pizza"),
-			new BlockItem(PIZZA_CAKE, new FabricItemSettings()
+			new Identifier(ModID, "cheese_pizza"),
+			new BlockItem(CHEESE_CAKE, new FabricItemSettings()
 					.group(ItemGroup.FOOD))
 	);
 
+	// Pepperoni Pizza
+	public static final PizzaBlock PEPPERONI_CAKE = Registry.register(
+			Registry.BLOCK,
+			new Identifier(ModID, "pepperoni_cake"),
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 3)
+	);
+
+	public static final Item PEPPERONI_PIZZA = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "pepperoni_pizza"),
+			new BlockItem(PEPPERONI_CAKE, new FabricItemSettings()
+					.group(ItemGroup.FOOD))
+	);
+
+	// tossed dough entity
 	public static final EntityType<DoughballEntity> DOUGHBALL_ENTITY = Registry.register(
 			Registry.ENTITY_TYPE,
 			new Identifier(ModID, "doughball_entity"),
