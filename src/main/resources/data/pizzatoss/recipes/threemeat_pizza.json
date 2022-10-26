@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "pizzatoss:threemeat_pizza_raw"
+  },
+  "result": "pizzatoss:threemeat_pizza"
+}

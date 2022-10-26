@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "pizzatoss:pizzadough"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "pizzatoss:cheese"
+    },
+    {
+      "item": "pizzatoss:cheese"
+    },
+    {
+      "item": "pizzatoss:cheese"
+    }
+  ],
+  "result": {
+    "item": "pizzatoss:cheeselover_pizza_raw"
+  }
+}

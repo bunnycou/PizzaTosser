@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "pizzatoss:pizzadough"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "pizzatoss:cheese"
+    },
+    [
+      {
+        "item": "minecraft:cod"
+      },
+      {
+        "item": "minecraft:salmon"
+      },
+      {
+        "item": "minecraft:tropical_fish"
+      }
+    ],
+    [
+      {
+        "item": "minecraft:cod"
+      },
+      {
+        "item": "minecraft:salmon"
+      },
+      {
+        "item": "minecraft:tropical_fish"
+      }
+    ],
+    [
+      {
+        "item": "minecraft:cod"
+      },
+      {
+        "item": "minecraft:salmon"
+      },
+      {
+        "item": "minecraft:tropical_fish"
+      }
+    ]
+  ],
+  "result": {
+    "item": "pizzatoss:fish_pizza_raw"
+  }
+}

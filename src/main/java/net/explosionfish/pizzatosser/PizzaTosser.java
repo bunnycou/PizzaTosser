@@ -46,7 +46,7 @@ public class PizzaTosser implements ModInitializer {
 	// Fermented Milk + Cheese
 	public static final Item FERMENTED_MILK_BLOB = Registry.register(
 			Registry.ITEM,
-			new Identifier(ModID, "fermented_milk_bucket"),
+			new Identifier(ModID, "fermented_milk_blob"),
 			new Item(new FabricItemSettings()
 					.food(new FoodComponent.Builder()
 							.hunger(1)

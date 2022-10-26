@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "pizzatoss:cheeselover_pizza_raw"
+  },
+  "result": "pizzatoss:cheeselover_pizza"
+}

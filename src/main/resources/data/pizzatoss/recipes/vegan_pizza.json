@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "pizzatoss:vegan_pizza_raw"
+  },
+  "result": "pizzatoss:vegan_pizza"
+}

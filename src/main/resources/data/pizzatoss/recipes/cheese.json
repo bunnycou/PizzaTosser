@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "pizzatoss:fermented_milk_blob"
+  },
+  "result": "pizzatoss:cheese"
+}

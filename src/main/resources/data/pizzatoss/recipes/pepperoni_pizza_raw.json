@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "pizzatoss:pizzadough"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "pizzatoss:cheese"
+    },
+    [
+      {
+        "item": "minecraft:porkchop"
+      },
+      {
+        "item": "minecraft:beef"
+      }
+    ]
+  ],
+  "result": {
+    "item": "pizzatoss:pepperoni_pizza_raw"
+  }
+}
