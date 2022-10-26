@@ -23,6 +23,9 @@
     ],
     "client" : [
       "net.explosionfish.pizzatosser.Client"
+    ],
+    "fabric-datagen": [
+      "net.explosionfish.pizzatosser.Datagen"
     ]
   },
 
