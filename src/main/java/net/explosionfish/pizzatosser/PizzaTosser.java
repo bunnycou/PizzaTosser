@@ -3,6 +3,7 @@ package net.explosionfish.pizzatosser;
 import net.explosionfish.pizzatosser.Block.PizzaBlock;
 import net.explosionfish.pizzatosser.Entity.DoughballEntity;
 import net.explosionfish.pizzatosser.Item.DoughballItem;
+import net.explosionfish.pizzatosser.Item.FermentedMilkItem;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -41,8 +42,26 @@ public class PizzaTosser implements ModInitializer {
 			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
 	);
 
-	// Pizzas (cake + item)
-	// Cheese Pizza
+	// Ingredients
+	// Fermented Milk + Cheese
+	public static final FermentedMilkItem FERMENTED_MILK = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "fermented_milk_bucket"),
+			new FermentedMilkItem(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
+
+	public static final Item CHEESE = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "cheese"),
+			new Item(new FabricItemSettings()
+					.group(ItemGroup.FOOD)
+					.food(new FoodComponent.Builder()
+							.hunger(1)
+							.build()))
+	);
+
+	// Pizzas (cake + item + raw)
+	// Cheese Pizza --------------------------------------------------
 	public static final PizzaBlock CHEESE_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "cheese_cake"),
@@ -56,7 +75,13 @@ public class PizzaTosser implements ModInitializer {
 					.group(ItemGroup.FOOD))
 	);
 
-	// Pepperoni Pizza
+	public static final Item CHEESE_PIZZA_RAW = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "cheese_pizza_raw"),
+			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
+
+	// Pepperoni Pizza --------------------------------------------------
 	public static final PizzaBlock PEPPERONI_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "pepperoni_cake"),
@@ -69,6 +94,133 @@ public class PizzaTosser implements ModInitializer {
 			new BlockItem(PEPPERONI_CAKE, new FabricItemSettings()
 					.group(ItemGroup.FOOD))
 	);
+
+	public static final Item PEPPERONI_PIZZA_RAW = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "pepperoni_pizza_raw"),
+			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
+
+	// Cheese Lovers --------------------------------------------------
+	public static final PizzaBlock CHEESELOVER_CAKE = Registry.register(
+			Registry.BLOCK,
+			new Identifier(ModID, "cheeselover_cake"),
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 4)
+	);
+
+	public static final Item CHEESELOVER_PIZZA = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "cheeselover_pizza"),
+			new BlockItem(CHEESELOVER_CAKE, new FabricItemSettings()
+					.group(ItemGroup.FOOD))
+	);
+
+	public static final Item CHEESELOVER_PIZZA_RAW = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "cheeselover_pizza_raw"),
+			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
+
+	// Chicken Bacon Rabbit --------------------------------------------------
+	public static final PizzaBlock CBR_CAKE = Registry.register(
+			Registry.BLOCK,
+			new Identifier(ModID, "cbr_cake"),
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 5)
+	);
+
+	public static final Item CBR_PIZZA = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "cbr_pizza"),
+			new BlockItem(CBR_CAKE, new FabricItemSettings()
+					.group(ItemGroup.FOOD))
+	);
+
+	public static final Item CBR_PIZZA_RAW = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "cbr_pizza_raw"),
+			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
+
+	// Three Meat Treat --------------------------------------------------
+	public static final PizzaBlock THREEMEAT_CAKE = Registry.register(
+			Registry.BLOCK,
+			new Identifier(ModID, "threemeat_cake"),
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 5)
+	);
+
+	public static final Item THREEMEAT_PIZZA = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "threemeat_pizza"),
+			new BlockItem(THREEMEAT_CAKE, new FabricItemSettings()
+					.group(ItemGroup.FOOD))
+	);
+
+	public static final Item THREEMEAT_PIZZA_RAW = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "threemeat_pizza_raw"),
+			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
+
+	// Vegan Pizza --------------------------------------------------
+	public static final PizzaBlock VEGAN_CAKE = Registry.register(
+			Registry.BLOCK,
+			new Identifier(ModID, "vegan_cake"),
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 1)
+	);
+
+	public static final Item VEGAN_PIZZA = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "vegan_pizza"),
+			new BlockItem(VEGAN_CAKE, new FabricItemSettings()
+					.group(ItemGroup.FOOD))
+	);
+
+	public static final Item VEAGAN_PIZZA_RAW = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "vegan_pizza_raw"),
+			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
+
+	// Fisherman's Delight --------------------------------------------------
+	public static final PizzaBlock FISH_CAKE = Registry.register(
+			Registry.BLOCK,
+			new Identifier(ModID, "fish_cake"),
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 3)
+	);
+
+	public static final Item FISH_PIZZA = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "fish_pizza"),
+			new BlockItem(FISH_CAKE, new FabricItemSettings()
+					.group(ItemGroup.FOOD))
+	);
+
+	public static final Item FISH_PIZZA_RAW = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "fish_pizza_raw"),
+			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
+
+	// Land Air and Sea --------------------------------------------------
+	public static final PizzaBlock LAS_CAKE = Registry.register(
+			Registry.BLOCK,
+			new Identifier(ModID, "las_cake"),
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 5)
+	);
+
+	public static final Item LAS_PIZZA = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "las_pizza"),
+			new BlockItem(LAS_CAKE, new FabricItemSettings()
+					.group(ItemGroup.FOOD))
+	);
+
+	public static final Item LAS_PIZZA_RAW = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "las_pizza_raw"),
+			new Item(new FabricItemSettings().group(ItemGroup.FOOD))
+	);
+
 
 	// tossed dough entity
 	public static final EntityType<DoughballEntity> DOUGHBALL_ENTITY = Registry.register(
