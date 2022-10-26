@@ -47,7 +47,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final FermentedMilkItem FERMENTED_MILK = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "fermented_milk_bucket"),
-			new FermentedMilkItem(new FabricItemSettings().group(ItemGroup.FOOD))
+			new FermentedMilkItem(new FabricItemSettings().group(ItemGroup.MISC))
 	);
 
 	public static final Item CHEESE = Registry.register(
