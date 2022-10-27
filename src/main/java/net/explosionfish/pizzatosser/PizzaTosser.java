@@ -200,7 +200,7 @@ public class PizzaTosser implements ModInitializer {
 			new BlockItem(VEGAN_CAKE, new FabricItemSettings())
 	);
 
-	public static final Item VEAGAN_PIZZA_RAW = Registry.register(
+	public static final Item VEGAN_PIZZA_RAW = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "vegan_pizza_raw"),
 			new Item(new FabricItemSettings())
@@ -269,6 +269,46 @@ public class PizzaTosser implements ModInitializer {
 					.build()))
 	);
 
+	public static final Item THREEMEAT_CALZONE = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "threemeat_calzone"),
+			new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+					.hunger(threemeat_hunger)
+					.build()))
+	);
+
+	public static final Item CBR_CALZONE = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "cbr_calzone"),
+			new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+					.hunger(cbr_hunger)
+					.build()))
+	);
+
+	public static final Item VEGAN_CALZONE = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "vegan_calzone"),
+			new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+					.hunger(vegan_hunger)
+					.build()))
+	);
+
+	public static final Item FISH_CALZONE = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "fish_calzone"),
+			new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+					.hunger(fish_hunger)
+					.build()))
+	);
+
+	public static final Item LAS_CALZONE = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "las_calzone"),
+			new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+					.hunger(las_hunger)
+					.build()))
+	);
+
 	// Item group for all the items
 	public static final ItemGroup PIZZA_GROUP = FabricItemGroupBuilder.create(
 					new Identifier(ModID, "pizza_group"))
@@ -286,28 +326,34 @@ public class PizzaTosser implements ModInitializer {
 				stacks.add(ItemStack.EMPTY); //9
 				// second row
 				stacks.add(new ItemStack(CHEESE_PIZZA_RAW));
-				stacks.add(new ItemStack(CHEESE_PIZZA));
-				stacks.add(new ItemStack(PEPPERONI_PIZZA_RAW));//3
-				stacks.add(new ItemStack(PEPPERONI_PIZZA));
-				stacks.add(new ItemStack(CHEESELOVER_PIZZA_RAW));
-				stacks.add(new ItemStack(CHEESELOVER_PIZZA)); //6
+				stacks.add(new ItemStack(PEPPERONI_PIZZA_RAW));
+				stacks.add(new ItemStack(CHEESELOVER_PIZZA_RAW)); //3
 				stacks.add(new ItemStack(THREEMEAT_PIZZA_RAW));
-				stacks.add(new ItemStack(THREEMEAT_PIZZA));
+				stacks.add(new ItemStack(CBR_PIZZA_RAW));
+				stacks.add(new ItemStack(VEGAN_PIZZA_RAW)); //6
+				stacks.add(new ItemStack(FISH_PIZZA_RAW));
+				stacks.add(new ItemStack(LAS_PIZZA_RAW));
 				stacks.add(ItemStack.EMPTY); //9
 				// third row
-				stacks.add(new ItemStack(CBR_PIZZA_RAW));
+				stacks.add(new ItemStack(CHEESE_PIZZA));
+				stacks.add(new ItemStack(PEPPERONI_PIZZA));
+				stacks.add(new ItemStack(CHEESELOVER_PIZZA)); //3
+				stacks.add(new ItemStack(THREEMEAT_PIZZA));
 				stacks.add(new ItemStack(CBR_PIZZA));
-				stacks.add(new ItemStack(VEAGAN_PIZZA_RAW)); //3
-				stacks.add(new ItemStack(VEGAN_PIZZA));
-				stacks.add(new ItemStack(FISH_PIZZA_RAW));
-				stacks.add(new ItemStack(FISH_PIZZA)); //6
-				stacks.add(new ItemStack(LAS_PIZZA_RAW));
+				stacks.add(new ItemStack(VEGAN_PIZZA)); //6
+				stacks.add(new ItemStack(FISH_PIZZA));
 				stacks.add(new ItemStack(LAS_PIZZA));
 				stacks.add(ItemStack.EMPTY); //9
 				// fourth row
 				stacks.add(new ItemStack(CHEESE_CALZONE));
 				stacks.add(new ItemStack(PEPPERONI_CALZONE));
 				stacks.add(new ItemStack(CHEESELOVER_CALZONE)); //3
+				stacks.add(new ItemStack(THREEMEAT_CALZONE));
+				stacks.add(new ItemStack(CBR_CALZONE));
+				stacks.add(new ItemStack(VEGAN_CALZONE)); //6
+				stacks.add(new ItemStack(FISH_CALZONE));
+				stacks.add(new ItemStack(LAS_CALZONE));
+				stacks.add(ItemStack.EMPTY); //9
 			})
 			.build();
 
