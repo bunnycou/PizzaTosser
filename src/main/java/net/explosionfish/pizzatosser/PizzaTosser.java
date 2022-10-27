@@ -42,6 +42,15 @@ public class PizzaTosser implements ModInitializer {
 			new Item(new FabricItemSettings())
 	);
 
+	// tossed dough entity
+	public static final EntityType<DoughballEntity> DOUGHBALL_ENTITY = Registry.register(
+			Registry.ENTITY_TYPE,
+			new Identifier(ModID, "doughball_entity"),
+			FabricEntityTypeBuilder.<DoughballEntity>create(SpawnGroup.MISC, DoughballEntity::new)
+					.dimensions(EntityDimensions.fixed(0.25f, 0.25f))
+					.trackRangeBlocks(4).trackedUpdateRate(10)
+					.build());
+
 	// Ingredients
 	// Fermented Milk + Cheese
 	public static final Item FERMENTED_MILK_BLOB = Registry.register(
@@ -49,7 +58,7 @@ public class PizzaTosser implements ModInitializer {
 			new Identifier(ModID, "fermented_milk_blob"),
 			new Item(new FabricItemSettings()
 					.food(new FoodComponent.Builder()
-							.hunger(1)
+							.hunger(0)
 							.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 4*10, 5), 100f)
 							.alwaysEdible()
 							.build()
@@ -63,15 +72,31 @@ public class PizzaTosser implements ModInitializer {
 			new Item(new FabricItemSettings()
 					.food(new FoodComponent.Builder()
 							.hunger(1)
+							.snack()
 							.build()))
 	);
+
+	// Hunger values for each pizza/calzone (pizza gives hunger*6 while calzones only give hunger*4 but are portable)
+	// hunger put in based on cooked ingredients
+	public static final Integer cheese_hunger = 2; // 1 hunger put in
+	public static final Integer pepperoni_hunger = 3; // 9 hunger put in
+	public static final Integer cheeselover_hunger = 3; // 3 hunger put in
+	public static final Integer cbr_hunger  = 5; // 20 hunger put in
+	public static final Integer threemeat_hunger = 6; // 23 hunger put in
+	public static final Integer vegan_hunger = 1; // 0 hunger put in
+	public static final Integer fish_hunger = 5; // 19 hunger put in
+	public static final Integer las_hunger = 6; // 21 hunger put in
+
+	// current values mean that cheese and cheeselover is the most hunger efficient (12:1 and 6:1) but only provide 12-18 hunger compared to the average 30-36 hunger
+	// pepperoni and cheeselover being equal might be balanced by the fact cheese takes a lot of effort to make?
+	// cbr is the least hunger efficinet (3:2 or 1:1 for calzone)
 
 	// Pizzas (cake + item + raw)
 	// Cheese Pizza --------------------------------------------------
 	public static final PizzaBlock CHEESE_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "cheese_cake"),
-			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 2)
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), cheese_hunger)
 	);
 
 	public static final Item CHEESE_PIZZA = Registry.register(
@@ -90,7 +115,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final PizzaBlock PEPPERONI_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "pepperoni_cake"),
-			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 3)
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), pepperoni_hunger)
 	);
 
 	public static final Item PEPPERONI_PIZZA = Registry.register(
@@ -109,7 +134,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final PizzaBlock CHEESELOVER_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "cheeselover_cake"),
-			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 4)
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), cheeselover_hunger)
 	);
 
 	public static final Item CHEESELOVER_PIZZA = Registry.register(
@@ -128,7 +153,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final PizzaBlock CBR_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "cbr_cake"),
-			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 5)
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), cbr_hunger)
 	);
 
 	public static final Item CBR_PIZZA = Registry.register(
@@ -147,7 +172,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final PizzaBlock THREEMEAT_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "threemeat_cake"),
-			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 5)
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), threemeat_hunger)
 	);
 
 	public static final Item THREEMEAT_PIZZA = Registry.register(
@@ -166,7 +191,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final PizzaBlock VEGAN_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "vegan_cake"),
-			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 1)
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), vegan_hunger)
 	);
 
 	public static final Item VEGAN_PIZZA = Registry.register(
@@ -185,7 +210,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final PizzaBlock FISH_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "fish_cake"),
-			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 3)
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), fish_hunger)
 	);
 
 	public static final Item FISH_PIZZA = Registry.register(
@@ -204,7 +229,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final PizzaBlock LAS_CAKE = Registry.register(
 			Registry.BLOCK,
 			new Identifier(ModID, "las_cake"),
-			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 5)
+			new PizzaBlock(FabricBlockSettings.copyOf(Blocks.CAKE), las_hunger)
 	);
 
 	public static final Item LAS_PIZZA = Registry.register(
@@ -219,17 +244,32 @@ public class PizzaTosser implements ModInitializer {
 			new Item(new FabricItemSettings())
 	);
 
+	// Calzones! Pizza snacks :)
+	public static final Item CHEESE_CALZONE = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "cheese_calzone"),
+			new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+					.hunger(cheese_hunger)
+					.build()))
+	);
 
-	// tossed dough entity
-	public static final EntityType<DoughballEntity> DOUGHBALL_ENTITY = Registry.register(
-			Registry.ENTITY_TYPE,
-			new Identifier(ModID, "doughball_entity"),
-			FabricEntityTypeBuilder.<DoughballEntity>create(SpawnGroup.MISC, DoughballEntity::new)
-					.dimensions(EntityDimensions.fixed(0.25f, 0.25f))
-					.trackRangeBlocks(4).trackedUpdateRate(10)
-					.build());
+	public static final Item PEPPERONI_CALZONE = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "pepperoni_calzone"),
+			new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+					.hunger(pepperoni_hunger)
+					.build()))
+	);
 
-	// Item group for all of the items
+	public static final Item CHEESELOVER_CALZONE = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "cheeselover_calzone"),
+			new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+					.hunger(cheeselover_hunger)
+					.build()))
+	);
+
+	// Item group for all the items
 	public static final ItemGroup PIZZA_GROUP = FabricItemGroupBuilder.create(
 					new Identifier(ModID, "pizza_group"))
 			.icon(() -> new ItemStack(PEPPERONI_PIZZA))
@@ -264,6 +304,10 @@ public class PizzaTosser implements ModInitializer {
 				stacks.add(new ItemStack(LAS_PIZZA_RAW));
 				stacks.add(new ItemStack(LAS_PIZZA));
 				stacks.add(ItemStack.EMPTY); //9
+				// fourth row
+				stacks.add(new ItemStack(CHEESE_CALZONE));
+				stacks.add(new ItemStack(PEPPERONI_CALZONE));
+				stacks.add(new ItemStack(CHEESELOVER_CALZONE)); //3
 			})
 			.build();
 
