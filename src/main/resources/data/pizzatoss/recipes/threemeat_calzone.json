@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "pizzatoss:threemeat_pizza"
+    }
+  ],
+  "result": {
+    "item": "pizzatoss:threemeat_calzone",
+    "count": 4
+  }
+}
