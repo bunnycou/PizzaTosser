@@ -16,7 +16,6 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
     @Override
     protected void generateRecipes(Consumer<RecipeJsonProvider> exporter) {
-        // for now this doesn't work
-        // ShapelessRecipeJsonBuilder.create(PizzaTosser.DOUGHBALL_ITEM).input(Items.WHEAT).input(Items.WATER_BUCKET).offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(PizzaTosser.DOUGHBALL_ITEM).input(Items.WHEAT).input(Items.WATER_BUCKET).offerTo(exporter);
     }
 }
