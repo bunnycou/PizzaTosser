@@ -1,3 +1,6 @@
 {
-  "parent": "block/las_cake"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "pizzatoss:item/las_pizza"
+  }
 }

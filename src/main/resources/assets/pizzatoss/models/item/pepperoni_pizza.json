@@ -1,3 +1,6 @@
 {
-  "parent": "block/pepperoni_cake"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "pizzatoss:item/pepperoni_pizza"
+  }
 }

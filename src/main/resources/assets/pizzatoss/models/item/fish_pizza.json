@@ -1,3 +1,6 @@
 {
-  "parent": "block/fish_cake"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "pizzatoss:item/fish_pizza"
+  }
 }

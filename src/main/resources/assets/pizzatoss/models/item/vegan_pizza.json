@@ -1,3 +1,6 @@
 {
-  "parent": "block/vegan_cake"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "pizzatoss:item/vegan_pizza"
+  }
 }
