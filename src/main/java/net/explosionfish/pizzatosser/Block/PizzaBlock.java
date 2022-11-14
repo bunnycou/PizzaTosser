@@ -7,12 +7,15 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 
 public class PizzaBlock extends CakeBlock {
     private final Integer hunger;
+    protected static final VoxelShape[] BITES_TO_SHAPE;
 
     public PizzaBlock(Settings settings, Integer hunger) {
         super(settings);
@@ -22,22 +25,6 @@ public class PizzaBlock extends CakeBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
-//        Item item = itemStack.getItem();
-
-//        if (itemStack.isIn(ItemTags.CANDLES) && (Integer)state.get(BITES) == 0) {
-//            Block block = Block.getBlockFromItem(item);
-//            if (block instanceof CandleBlock) {
-//                if (!player.isCreative()) {
-//                    itemStack.decrement(1);
-//                }
-//
-//                world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CAKE_ADD_CANDLE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-//                world.setBlockState(pos, CandleCakeBlock.getCandleCakeFromCandle(block));
-//                world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-//                player.incrementStat(Stats.USED.getOrCreateStat(item));
-//                return ActionResult.SUCCESS;
-//            }
-//        }
 
         if (world.isClient) {
             if (tryEat(world, pos, state, player, this.hunger).isAccepted()) {
@@ -68,5 +55,14 @@ public class PizzaBlock extends CakeBlock {
 
             return ActionResult.SUCCESS;
         }
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return BITES_TO_SHAPE[(Integer)state.get(BITES)];
+    }
+
+    static {
+        BITES_TO_SHAPE = new VoxelShape[]{Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 3.0, 15.0), Block.createCuboidShape(3.0, 0.0, 1.0, 15.0, 3.0, 15.0), Block.createCuboidShape(5.0, 0.0, 1.0, 15.0, 3.0, 15.0), Block.createCuboidShape(7.0, 0.0, 1.0, 15.0, 3.0, 15.0), Block.createCuboidShape(9.0, 0.0, 1.0, 15.0, 3.0, 15.0), Block.createCuboidShape(11.0, 0.0, 1.0, 15.0, 3.0, 15.0), Block.createCuboidShape(13.0, 0.0, 1.0, 15.0, 3.0, 15.0)};
     }
 }
