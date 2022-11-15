@@ -1,6 +1,5 @@
 package net.explosionfish.pizzatosser.Entity;
 
-import net.explosionfish.pizzatosser.Item.DoughballItem;
 import net.explosionfish.pizzatosser.PizzaTosser;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -22,23 +21,15 @@ import net.minecraft.world.World;
 
 public class DoughballEntity extends ThrownItemEntity {
 
-    private Integer tosses = 0;
+    private Integer tosses;
 
     public DoughballEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public DoughballEntity(World world, LivingEntity owner) {
-        super(PizzaTosser.DOUGHBALL_ENTITY, owner, world);
-    }
-
     public DoughballEntity(World world, LivingEntity owner, Integer tosses) {
         super(PizzaTosser.DOUGHBALL_ENTITY, owner, world);
         this.tosses = tosses;
-    }
-
-    public DoughballEntity(World world, double x, double y, double z) {
-        super(PizzaTosser.DOUGHBALL_ENTITY, x, y, z, world);
     }
 
     @Override
@@ -68,14 +59,13 @@ public class DoughballEntity extends ThrownItemEntity {
         Entity entity = entityHitResult.getEntity();
 
         if (entity instanceof PlayerEntity playerEntity) {
-            if (this.tosses % 3 == 0) {
-                playerEntity.giveItemStack(new ItemStack(PizzaTosser.PIZZADOUGH_ITEM));
-            } else {
-                this.tosses += 1;
-                DoughballItem item = PizzaTosser.DOUGHBALL_ITEM;
-                item.setTosses(this.tosses);
-                playerEntity.giveItemStack(new ItemStack(item));
-            }
+            ItemStack item = switch (this.tosses) {
+                case 1 -> new ItemStack(PizzaTosser.DOUGHBALL_ITEM2);
+                case 2 -> new ItemStack(PizzaTosser.DOUGHBALL_ITEM3);
+                case 3 -> new ItemStack(PizzaTosser.PIZZADOUGH_ITEM);
+                default -> new ItemStack(Items.DIRT);
+            };
+            playerEntity.giveItemStack(item);
         }
     }
 

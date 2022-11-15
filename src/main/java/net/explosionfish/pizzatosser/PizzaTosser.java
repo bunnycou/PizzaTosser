@@ -33,7 +33,26 @@ public class PizzaTosser implements ModInitializer {
 			Registry.ITEM,
 			new Identifier(ModID, "doughball"),
 			new DoughballItem(new FabricItemSettings()
-					.maxCount(1))
+					.maxCount(1),
+					1)
+	);
+
+	// steps of doughball
+
+	public static final DoughballItem DOUGHBALL_ITEM2 = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "doughball2"),
+			new DoughballItem(new FabricItemSettings()
+					.maxCount(1),
+					2)
+	);
+
+	public static final DoughballItem DOUGHBALL_ITEM3 = Registry.register(
+			Registry.ITEM,
+			new Identifier(ModID, "doughball3"),
+			new DoughballItem(new FabricItemSettings()
+					.maxCount(1),
+					3)
 	);
 
 	public static final Item PIZZADOUGH_ITEM = Registry.register(

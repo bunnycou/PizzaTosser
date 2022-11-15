@@ -13,6 +13,8 @@ public class EnglishLangProvider extends FabricLanguageProvider {
     public void generateTranslations(TranslationBuilder translationBuilder) {
         // items
         translationBuilder.add(PizzaTosser.DOUGHBALL_ITEM, "Dough Ball");
+        translationBuilder.add(PizzaTosser.DOUGHBALL_ITEM2, "Slightly Tossed Dough Ball");
+        translationBuilder.add(PizzaTosser.DOUGHBALL_ITEM3, "Decently Tossed Dough Ball");
         translationBuilder.add(PizzaTosser.PIZZADOUGH_ITEM, "Pizza Dough");
         translationBuilder.add(PizzaTosser.FERMENTED_MILK_BLOB, "Fermented Milk Blob");
         translationBuilder.add(PizzaTosser.CHEESE, "Cheese");
