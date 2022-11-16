@@ -14,8 +14,11 @@ import net.minecraft.world.World;
 
 public class PizzaBlockItem extends BlockItem {
 
-    public PizzaBlockItem(Block block, Settings settings) {
+    private final Integer hunger;
+
+    public PizzaBlockItem(Block block, Settings settings, Integer hunger) {
         super(block, settings);
+        this.hunger = hunger;
     }
 
     @Override
@@ -24,7 +27,7 @@ public class PizzaBlockItem extends BlockItem {
             ItemStack itemStack = user.getStackInHand(hand);
             world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
             if (!world.isClient) {
-                PizzaEntity pizzaEntity = new PizzaEntity(world, user);
+                PizzaEntity pizzaEntity = new PizzaEntity(world, user, itemStack, this.hunger);
                 pizzaEntity.setItem(itemStack);
                 pizzaEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
                 world.spawnEntity(pizzaEntity);

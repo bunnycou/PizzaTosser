@@ -122,7 +122,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final Item CHEESE_PIZZA = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "cheese_pizza"),
-			new PizzaBlockItem(CHEESE_CAKE, new FabricItemSettings().maxCount(1))
+			new PizzaBlockItem(CHEESE_CAKE, new FabricItemSettings().maxCount(1), cheese_hunger)
 	);
 
 	public static final Item CHEESE_PIZZA_RAW = Registry.register(
@@ -141,7 +141,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final Item PEPPERONI_PIZZA = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "pepperoni_pizza"),
-			new PizzaBlockItem(PEPPERONI_CAKE, new FabricItemSettings().maxCount(1))
+			new PizzaBlockItem(PEPPERONI_CAKE, new FabricItemSettings().maxCount(1), pepperoni_hunger)
 	);
 
 	public static final Item PEPPERONI_PIZZA_RAW = Registry.register(
@@ -160,7 +160,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final Item CHEESELOVER_PIZZA = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "cheeselover_pizza"),
-			new PizzaBlockItem(CHEESELOVER_CAKE, new FabricItemSettings().maxCount(1))
+			new PizzaBlockItem(CHEESELOVER_CAKE, new FabricItemSettings().maxCount(1), cheeselover_hunger)
 	);
 
 	public static final Item CHEESELOVER_PIZZA_RAW = Registry.register(
@@ -179,7 +179,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final Item CBR_PIZZA = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "cbr_pizza"),
-			new PizzaBlockItem(CBR_CAKE, new FabricItemSettings().maxCount(1))
+			new PizzaBlockItem(CBR_CAKE, new FabricItemSettings().maxCount(1), cbr_hunger)
 	);
 
 	public static final Item CBR_PIZZA_RAW = Registry.register(
@@ -198,7 +198,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final Item THREEMEAT_PIZZA = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "threemeat_pizza"),
-			new PizzaBlockItem(THREEMEAT_CAKE, new FabricItemSettings().maxCount(1))
+			new PizzaBlockItem(THREEMEAT_CAKE, new FabricItemSettings().maxCount(1), threemeat_hunger)
 	);
 
 	public static final Item THREEMEAT_PIZZA_RAW = Registry.register(
@@ -217,7 +217,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final Item VEGAN_PIZZA = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "vegan_pizza"),
-			new PizzaBlockItem(VEGAN_CAKE, new FabricItemSettings().maxCount(1))
+			new PizzaBlockItem(VEGAN_CAKE, new FabricItemSettings().maxCount(1), vegan_hunger)
 	);
 
 	public static final Item VEGAN_PIZZA_RAW = Registry.register(
@@ -236,7 +236,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final Item FISH_PIZZA = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "fish_pizza"),
-			new PizzaBlockItem(FISH_CAKE, new FabricItemSettings().maxCount(1))
+			new PizzaBlockItem(FISH_CAKE, new FabricItemSettings().maxCount(1), fish_hunger)
 	);
 
 	public static final Item FISH_PIZZA_RAW = Registry.register(
@@ -255,7 +255,7 @@ public class PizzaTosser implements ModInitializer {
 	public static final Item LAS_PIZZA = Registry.register(
 			Registry.ITEM,
 			new Identifier(ModID, "las_pizza"),
-			new PizzaBlockItem(LAS_CAKE, new FabricItemSettings().maxCount(1))
+			new PizzaBlockItem(LAS_CAKE, new FabricItemSettings().maxCount(1), las_hunger)
 	);
 
 	public static final Item LAS_PIZZA_RAW = Registry.register(
